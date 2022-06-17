@@ -1,13 +1,25 @@
-import { useEffect, useRef } from "react";
-
-const Input = ({ name, onChange, focus }) => {
-  const ref = useRef();
+import { useEffect, useRef, useState } from "react";
+const Input = () => {
+  const [state, setState] = useState(0);
+  console.log({ state });
   useEffect(() => {
-    if (true) {
-      ref.current.focus();
-    }
-  }, [focus]);
-
-  return <input ref={ref} />;
+    console.log("mounting");
+    return () => {
+      console.log("unmouting");
+    };
+  }, []);
+  console.log("render");
+  return (
+    <div>
+      Input
+      <button
+        onClick={() => {
+          setState(state + 1);
+        }}
+      >
+        first
+      </button>
+    </div>
+  );
 };
 export default Input;
