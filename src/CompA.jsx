@@ -3,12 +3,9 @@ const Input = () => {
   const [state, setState] = useState(0);
   console.log({ state });
   useEffect(() => {
-    console.log("mounting");
-    return () => {
-      console.log("unmouting");
-    };
-  }, []);
-  console.log("render");
+    console.log("on each re-render");
+  });
+
   return (
     <div>
       Input
