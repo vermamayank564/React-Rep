@@ -1,10 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 const Input = () => {
   const [state, setState] = useState(0);
-  console.log({ state });
   useEffect(() => {
-    console.log("on each re-render");
-  });
+    console.log("mouting", state);
+
+    return () => {
+      console.log("unmouting", state);
+    };
+  }, [state]);
 
   return (
     <div>

@@ -16,7 +16,7 @@ import Input from "./CompA";
 // Virtual DOM
 
 function App() {
-  const [flag, toggleFlag] = useState(false);
+  const [flag, toggleFlag] = useState(true);
   return (
     <div className="App">
       Welcome App
