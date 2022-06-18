@@ -1,7 +1,6 @@
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import "./App.css";
 import CompA from "./CompA";
-import Input from "./CompA";
 import CompB from "./CompB";
 
 // props, state.
@@ -21,10 +20,25 @@ import CompB from "./CompB";
 
 function App() {
   const [state, setState] = useState(0);
-  const a = {
-    // {value : 5}
-    value: 5,
-  };
+  const [state2, setState2] = useState(0);
+
+  // const ref = useRef({
+  //   value: state,
+  // });
+  /* -------------------------------------------------------------------------- */
+  // state 1 (B1)
+  // staet 2 (B2)
+
+  // state 1 =>a => <Comp  />
+  /* -------------------------------------------------------------------------- */
+
+  const a = useMemo(() => {
+    console.log("useMemo run");
+    return {
+      value: state,
+    };
+  }, [state]);
+
   return (
     <div className="App">
       Welcome App
@@ -32,10 +46,16 @@ function App() {
       <button
         onClick={() => {
           setState((s) => s + 1);
-          a.value = 6;
         }}
       >
-        change
+        change state 1
+      </button>
+      <button
+        onClick={() => {
+          setState2((s) => s + 1);
+        }}
+      >
+        change state 2
       </button>
     </div>
   );

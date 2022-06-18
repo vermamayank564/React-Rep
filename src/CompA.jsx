@@ -5,9 +5,4 @@ const CompA = ({ data }) => {
   return <div>CompA</div>;
 };
 
-export default memo(CompA, (prevProps, nextProps) => {
-  console.log({ prevProps }, { nextProps });
-  return prevProps.data.value === nextProps.data.value;
-});
-// check only props
-// byDefault => it will re-render only when props changed
+export default memo(CompA);
