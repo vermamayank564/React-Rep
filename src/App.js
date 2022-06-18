@@ -1,33 +1,42 @@
-import { useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import "./App.css";
+import CompA from "./CompA";
 import Input from "./CompA";
+import CompB from "./CompB";
 
 // props, state.
 // useRef, useEffect, useState ... hook.
 // What thhings are render in react
-// key, list rendering.
+// key
+// lifting state up.
+// memo , useCallback , useMemo
+// list rendering.
 // Rendering.
 // Api call, place to fetch data.
 // Fragment.
 // Controlled and uncontrolled input
-// lifting state up.
 // Error Boundaries
 // HOC and Wrapper Comp
 // Virtual DOM
 
 function App() {
-  const [flag, toggleFlag] = useState(true);
+  const [state, setState] = useState(0);
+  const a = {
+    // {value : 5}
+    value: 5,
+  };
   return (
     <div className="App">
       Welcome App
+      <CompA data={a} />
       <button
         onClick={() => {
-          toggleFlag((f) => !f);
+          setState((s) => s + 1);
+          a.value = 6;
         }}
       >
-        toggle
+        change
       </button>
-      {flag && <Input />}
     </div>
   );
 }

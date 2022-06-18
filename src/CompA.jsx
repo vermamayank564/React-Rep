@@ -1,23 +1,13 @@
-import { useEffect, useRef, useState } from "react";
-const Input = () => {
-  const [state, setState] = useState(0);
-  const ref = useRef(0);
-  useEffect(() => {
-    console.log("ref", ref.current);
-  }, [ref.current]);
+import { memo } from "react";
 
-  return (
-    <div>
-      Input
-      <button
-        onClick={() => {
-          // setState(state + 1);
-          ref.current = ref.current + 1;
-        }}
-      >
-        first
-      </button>
-    </div>
-  );
+const CompA = ({ data }) => {
+  console.log("CompA", data.value);
+  return <div>CompA</div>;
 };
-export default Input;
+
+export default memo(CompA, (prevProps, nextProps) => {
+  console.log({ prevProps }, { nextProps });
+  return prevProps.data.value === nextProps.data.value;
+});
+// check only props
+// byDefault => it will re-render only when props changed
