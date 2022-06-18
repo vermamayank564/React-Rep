@@ -1,0 +1,14 @@
+1.  When does component Re-render?.
+2.  What is JSX?
+3.  Best way to update state if new state is dependend on previous state?
+4.  are props mutable and what will happen if we change props inside component forcefully?
+5.  Difference in ref and state.
+6.  Applications of ref.
+7.  How does useEffect works?
+8.  Replicate Mouting/Unmouting using useEffect.
+9.  How to return multiple JSX elements from a component without using Fragment or Singe Parent node.
+10. What is lifting state up in React.
+11. What is virtual Dom?
+12. Difference in useMemo and useCallback?
+13. Difference in memo and useMemo? 
+14. Difference in Compositon and Inheritance. What does react follows?
