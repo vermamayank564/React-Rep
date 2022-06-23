@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import "./App.css";
-import CompA from "./CompA";
-import CompB from "./CompB";
+import Input from "./input";
+import { useHistory } from "react-router-dom";
 
 // props, state.
 // useRef, useEffect, useState ... hook.
@@ -19,44 +19,50 @@ import CompB from "./CompB";
 // Virtual DOM
 
 function App() {
-  const [state, setState] = useState(0);
-  const [state2, setState2] = useState(0);
-
-  // const ref = useRef({
-  //   value: state,
-  // });
-  /* -------------------------------------------------------------------------- */
-  // state 1 (B1)
-  // staet 2 (B2)
-
-  // state 1 =>a => <Comp  />
-  /* -------------------------------------------------------------------------- */
-
-  const a = useMemo(() => {
-    console.log("useMemo run");
-    return {
-      value: state,
-    };
-  }, [state]);
-
+  const [state, setState] = useState({
+    name: "",
+    email: "",
+    age: "",
+  });
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setState((s) => {
+      return { ...s, [name]: value };
+    });
+  };
+  const checkEmpty = () => {
+    for (let key in state) {
+      if (!state[key]) {
+        return true;
+      }
+    }
+    return false;
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const isEmpty = checkEmpty();
+    if (isEmpty) {
+      //showErrorMSg
+      console.log({ isEmpty });
+    } else {
+      // api call
+      console.log(state);
+    }
+  };
   return (
     <div className="App">
       Welcome App
-      <CompA data={a} />
-      <button
-        onClick={() => {
-          setState((s) => s + 1);
-        }}
-      >
-        change state 1
-      </button>
-      <button
-        onClick={() => {
-          setState2((s) => s + 1);
-        }}
-      >
-        change state 2
-      </button>
+      <form onSubmit={handleSubmit}>
+        <input name="email" placeholder="email" onChange={handleChange} />
+        <input name="name" placeholder="name" onChange={handleChange} />
+        <input
+          name="age"
+          placeholder="age"
+          type="text"
+          onChange={handleChange}
+        />
+        <input type="submit" />
+      </form>
     </div>
   );
 }

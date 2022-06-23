@@ -1,7 +1,7 @@
 import { memo } from "react";
 
-const CompA = ({ data }) => {
-  console.log("CompA", data.value);
+const CompA = ({ func }) => {
+  console.log("render");
   return <div>CompA</div>;
 };
 
